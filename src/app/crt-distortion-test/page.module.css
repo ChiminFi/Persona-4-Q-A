@@ -1,0 +1,114 @@
+.page {
+  width: min(100%, 44rem);
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  color: #222;
+  font-family: system-ui, sans-serif;
+}
+
+.page h1 {
+  margin-bottom: 1rem;
+  font-size: 1.25rem;
+}
+
+.toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.page > p {
+  margin: 1rem 0;
+  overflow-wrap: anywhere;
+}
+
+.filterDefinition {
+  position: absolute;
+  pointer-events: none;
+}
+
+.samplingControl {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.samplingControl select {
+  border: 1px solid #777;
+  padding: 0.25rem;
+}
+
+.samplingFrame {
+  position: relative;
+  overflow: hidden;
+}
+
+.wrapper {
+  width: calc(100% * var(--sampling));
+  transform: scale(calc(1 / var(--sampling)));
+  transform-origin: top left;
+  font-size: calc(1rem * var(--sampling));
+  padding: calc(1.25rem * var(--sampling));
+  border: calc(3px * var(--sampling)) solid #777;
+  background: #f7f5ee;
+}
+
+.viewport {
+  height: calc(17rem * var(--sampling));
+  overflow-y: auto;
+  border: calc(3px * var(--sampling)) solid #aaa;
+  padding: calc(0.75rem * var(--sampling));
+}
+
+.messages {
+  display: flex;
+  flex-direction: column;
+  gap: calc(1rem * var(--sampling));
+  min-height: calc(25rem * var(--sampling));
+}
+
+.bubble {
+  align-self: flex-start;
+  max-width: 85%;
+  margin: 0;
+  padding: calc(0.75rem * var(--sampling));
+  border: calc(3px * var(--sampling)) solid #777;
+  border-radius: calc(0.75rem * var(--sampling));
+  background: #fff;
+  line-height: 1.6;
+}
+
+.user {
+  align-self: flex-end;
+  background: #e4ebf4;
+}
+
+.text {
+  margin-top: auto;
+  line-height: 1.6;
+}
+
+.inputLabel {
+  display: grid;
+  gap: calc(0.5rem * var(--sampling));
+  margin-top: calc(1rem * var(--sampling));
+}
+
+.inputLabel input {
+  width: 100%;
+  min-width: 0;
+  padding: calc(0.75rem * var(--sampling));
+  border: calc(1px * var(--sampling)) solid #777;
+  background: #fff;
+  font: inherit;
+}
+
+.wrapper button {
+  margin-top: calc(0.75rem * var(--sampling));
+  padding: calc(0.625rem * var(--sampling)) calc(1rem * var(--sampling));
+  border: calc(1px * var(--sampling)) solid #555;
+  background: #fff;
+  font: inherit;
+  cursor: pointer;
+}

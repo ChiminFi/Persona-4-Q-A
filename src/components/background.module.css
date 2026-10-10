@@ -1,0 +1,63 @@
+.background {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.warm-yellow {
+  width: 100%;
+  height: 100vh;
+  height: 100dvh;
+  position: relative;
+  overflow: hidden;
+
+  background: linear-gradient(180deg, #e8ce20 0%, #e8cb1e 65%, #c4a52a 100%);
+}
+
+.diagonal-cream-separator,
+.deep-black-olive,
+.halftone-upper-left {
+  position: absolute;
+  inset: 0;
+  background-repeat: no-repeat;
+  /* Figma exports include the full canvas and allow non-uniform scaling. */
+  background-size: 100% 100%;
+  pointer-events: none;
+}
+
+.diagonal-cream-separator {
+  background-image: url("/figma/cream-separator.svg");
+}
+
+.deep-black-olive {
+  background-image: url("/figma/black-olive.svg");
+}
+
+.halftone-upper-left {
+  width: 14rem;
+  height: 12.44444rem;
+  background-image: url("/figma/vector.svg");
+}
+
+.halftone-lower-right {
+  position: absolute;
+  right: 0;
+  bottom: 7%;
+
+  width: 14rem;
+  height: 12.4rem;
+  background-image: url("/figma/vector.svg");
+}
+
+.floor-subtle-darkening {
+  width: 100%;
+  height: 13.3%;
+  position: absolute;
+  bottom: 0;
+
+  background: linear-gradient(
+    180deg,
+    rgba(75, 64, 32, 0) 0%,
+    rgba(108, 87, 37, 0.4) 100%
+  );
+}

@@ -1,0 +1,132 @@
+.speaker-n-dials {
+  width: 100%;
+  height: 100%;
+
+  padding: 0.3% 0;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1%;
+
+  border-radius: 0.1rem;
+  border: 0.7px solid #a97446;
+  background: #2a190f;
+}
+
+.large-horizontal-grille {
+  width: 96%;
+  height: 47.27%;
+
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+
+  background-image: url("/figma/large-horizontal-grille.svg");
+}
+
+.control-plate {
+  position: relative;
+  width: 96%;
+  flex: 1;
+
+  border-radius: 0.1rem;
+  border: 1.42px solid #a29375;
+  background: linear-gradient(
+    180deg,
+    #9d8b67 0%,
+    #ddccac 6%,
+    #e2d3b3 50%,
+    #d1bd96 93%,
+    #7d694a 100%
+  );
+  box-shadow: 0 0 5.689px 0 rgba(0, 0, 0, 0.3) inset;
+}
+
+.panel {
+  position: absolute;
+  inset: 0;
+}
+
+.panel::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  border-radius: inherit;
+  pointer-events: none;
+
+  --scratch-1: linear-gradient(
+    12deg,
+    transparent calc(50% - 0.35px),
+    rgb(65 48 22 / 8%) calc(50% - 0.35px),
+    rgb(65 48 22 / 8%) 50%,
+    rgb(255 248 219 / 12%) 50%,
+    rgb(255 248 219 / 12%) calc(50% + 0.35px),
+    transparent calc(50% + 0.35px)
+  );
+  --scratch-2: linear-gradient(
+    43deg,
+    transparent calc(50% - 0.35px),
+    rgb(65 48 22 / 10%) calc(50% - 0.35px),
+    rgb(65 48 22 / 10%) 50%,
+    rgb(255 248 219 / 12%) 50%,
+    rgb(255 248 219 / 12%) calc(50% + 0.35px),
+    transparent calc(50% + 0.35px)
+  );
+  --scratch-3: linear-gradient(
+    78deg,
+    transparent calc(50% - 0.35px),
+    rgb(65 48 22 / 8%) calc(50% - 0.35px),
+    rgb(65 48 22 / 8%) 50%,
+    rgb(255 248 219 / 12%) 50%,
+    rgb(255 248 219 / 12%) calc(50% + 0.35px),
+    transparent calc(50% + 0.35px)
+  );
+  --scratch-4: linear-gradient(
+    112deg,
+    transparent calc(50% - 0.35px),
+    rgb(65 48 22 / 10%) calc(50% - 0.35px),
+    rgb(65 48 22 / 10%) 50%,
+    rgb(255 248 219 / 12%) 50%,
+    rgb(255 248 219 / 12%) calc(50% + 0.35px),
+    transparent calc(50% + 0.35px)
+  );
+  --scratch-5: linear-gradient(
+    146deg,
+    transparent calc(50% - 0.35px),
+    rgb(65 48 22 / 8%) calc(50% - 0.35px),
+    rgb(65 48 22 / 8%) 50%,
+    rgb(255 248 219 / 12%) 50%,
+    rgb(255 248 219 / 12%) calc(50% + 0.35px),
+    transparent calc(50% + 0.35px)
+  );
+  --scratch-6: linear-gradient(
+    171deg,
+    transparent calc(50% - 0.35px),
+    rgb(65 48 22 / 10%) calc(50% - 0.35px),
+    rgb(65 48 22 / 10%) 50%,
+    rgb(255 248 219 / 12%) 50%,
+    rgb(255 248 219 / 12%) calc(50% + 0.35px),
+    transparent calc(50% + 0.35px)
+  );
+
+  background:
+    var(--scratch-4) 14% 12% / 3% 1% no-repeat,
+    var(--scratch-1) 43% 17% / 2% 0.8% no-repeat,
+    var(--scratch-6) 78% 11% / 3% 1.2% no-repeat,
+    var(--scratch-3) 66% 25% / 4% 1.3% no-repeat,
+    var(--scratch-5) 29% 31% / 2.5% 1% no-repeat,
+    var(--scratch-2) 35% 33% / 2% 0.8% no-repeat,
+    var(--scratch-1) 86% 38% / 2.5% 1% no-repeat,
+    var(--scratch-5) 51% 43% / 3% 1.2% no-repeat,
+    var(--scratch-3) 18% 47% / 2.5% 0.8% no-repeat,
+    var(--scratch-6) 73% 52% / 3% 1% no-repeat,
+    var(--scratch-2) 39% 58% / 2% 0.8% no-repeat,
+    var(--scratch-4) 44% 60% / 2.5% 1% no-repeat,
+    var(--scratch-5) 12% 67% / 3.5% 1.4% no-repeat,
+    var(--scratch-1) 62% 72% / 2.5% 1% no-repeat,
+    var(--scratch-4) 83% 76% / 2% 0.8% no-repeat,
+    var(--scratch-2) 31% 81% / 3% 1.1% no-repeat,
+    var(--scratch-6) 55% 88% / 2% 0.8% no-repeat,
+    var(--scratch-3) 76% 91% / 3% 1% no-repeat;
+}

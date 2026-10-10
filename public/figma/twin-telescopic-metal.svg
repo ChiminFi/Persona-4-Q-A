@@ -1,0 +1,36 @@
+<svg width="423" height="179" viewBox="0 0 423 179" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M165.063 146.722L17.375 10.6181Z" fill="black"/>
+<path d="M165.063 146.722L17.375 10.6181" stroke="#372B1D" stroke-width="7.1111" stroke-linecap="round"/>
+<path d="M165.063 146.722L17.375 10.6181Z" fill="black"/>
+<path d="M165.063 146.722L17.375 10.6181" stroke="#B6AD95" stroke-width="4.9778" stroke-linecap="round"/>
+<path d="M163.615 145.274L15.9271 9.1701Z" fill="black"/>
+<path d="M163.615 145.274L15.9271 9.1701" stroke="#F4EBCF" stroke-width="1.4222" stroke-linecap="round"/>
+<path d="M123.373 103.052L118.14 108.73Z" fill="black"/>
+<path d="M123.373 103.052L118.14 108.73" stroke="#D9CDB0" stroke-width="2.1333"/>
+<path d="M82.0204 64.9425L76.7872 70.6211Z" fill="black"/>
+<path d="M82.0204 64.9425L76.7872 70.6211" stroke="#D9CDB0" stroke-width="2.1333"/>
+<path d="M43.6216 29.5554L38.3884 35.234Z" fill="black"/>
+<path d="M43.6216 29.5554L38.3884 35.234" stroke="#D9CDB0" stroke-width="2.1333"/>
+<circle cx="17.3751" cy="10.6181" r="6.75695" fill="#8A7257"/>
+<path d="M248.076 146.722L399.625 10.6181Z" fill="black"/>
+<path d="M248.076 146.722L399.625 10.6181" stroke="#372B1D" stroke-width="7.1111" stroke-linecap="round"/>
+<path d="M248.076 146.722L399.625 10.6181Z" fill="black"/>
+<path d="M248.076 146.722L399.625 10.6181" stroke="#B6AD95" stroke-width="4.9778" stroke-linecap="round"/>
+<path d="M246.628 145.274L398.177 9.1701Z" fill="black"/>
+<path d="M246.628 145.274L398.177 9.1701" stroke="#F4EBCF" stroke-width="1.4222" stroke-linecap="round"/>
+<path d="M296.121 108.764L290.961 103.018Z" fill="black"/>
+<path d="M296.121 108.764L290.961 103.018" stroke="#D9CDB0" stroke-width="2.1333"/>
+<path d="M338.555 70.6544L333.395 64.9091Z" fill="black"/>
+<path d="M338.555 70.6544L333.395 64.9091" stroke="#D9CDB0" stroke-width="2.1333"/>
+<path d="M377.957 35.2674L372.797 29.5221Z" fill="black"/>
+<path d="M377.957 35.2674L372.797 29.5221" stroke="#D9CDB0" stroke-width="2.1333"/>
+<circle cx="399.625" cy="10.6181" r="6.75695" fill="#8A7257"/>
+<ellipse cx="207.535" cy="155.41" rx="57.9166" ry="23.1667" fill="url(#paint0_linear_21_422)"/>
+<defs>
+<linearGradient id="paint0_linear_21_422" x1="207.535" y1="132.243" x2="207.535" y2="178.576" gradientUnits="userSpaceOnUse">
+<stop stop-color="#7B7764"/>
+<stop offset="0.4" stop-color="#31352B"/>
+<stop offset="1" stop-color="#0C0E08"/>
+</linearGradient>
+</defs>
+</svg>

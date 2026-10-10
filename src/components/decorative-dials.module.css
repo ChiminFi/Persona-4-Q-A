@@ -1,0 +1,36 @@
+.dial {
+  position: relative;
+  width: 32.5%;
+  aspect-ratio: 0.794;
+
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+
+  background-image: url("/figma/decorative.svg");
+}
+
+.pointer-pivot {
+  position: absolute;
+  left: 0;
+  top: 0;
+  /* Square coordinates follow the dial width, like its background SVG. */
+  width: 100%;
+  aspect-ratio: 1;
+  /* Background viewBox 54 x 56; knob center (26.9763, 24.8431). */
+  transform-origin: 49.956% 46.006%;
+  pointer-events: none;
+  transform: rotate(var(--pointer-angle, 180deg));
+}
+
+.small-pointer {
+  position: absolute;
+
+  left: 49.956%;
+  top: 46.006%;
+
+  width: 13.5%;
+  height: auto;
+  aspect-ratio: 7 / 13;
+  /* Anchor the path root (5.48277, 11.8568), not the SVG box center. */
+  transform: translate(-78.325%, -91.206%);
+}

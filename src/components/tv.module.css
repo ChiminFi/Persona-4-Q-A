@@ -1,0 +1,175 @@
+.tv {
+  position: relative;
+  z-index: 1;
+
+  height: 100vh;
+  height: 100dvh;
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  overflow: hidden;
+}
+
+.scene {
+  position: relative;
+  width: 85%;
+  aspect-ratio: 4 / 3; /* 1390 / 1042.5 */
+}
+
+.soft-ground-shadow {
+  position: absolute;
+  left: 14.17%;
+  top: 87.22%;
+
+  width: 72.49%;
+  height: 5.46%;
+  opacity: 0.65;
+  filter: blur(7.8px);
+}
+
+.soft-ground-shadow svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.angled-wood {
+  position: absolute;
+  left: 0;
+  top: 81.67%;
+
+  width: 100%;
+  aspect-ratio: 1390 / 114;
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+
+  background-image: url("/figma/angled-wood.svg");
+}
+
+.twin-telescopic-metal {
+  position: absolute;
+  top: 2.0371%;
+  left: 36.11%;
+
+  width: 30.41%;
+  aspect-ratio: 2.58;
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+
+  background-image: url("/figma/twin-telescopic-metal.svg");
+}
+
+.original-rectangle {
+  position: absolute;
+  top: 16.85%;
+  left: 10.56%;
+
+  width: 80.83%;
+  aspect-ratio: 1.62;
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+
+  background-image: url("/figma/original-rectangle.svg");
+}
+
+.deep-recess {
+  position: absolute;
+  top: 19.56%;
+  left: 12.84%;
+
+  width: 60.53%;
+  aspect-ratio: 1.328;
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+
+  background-image: url("/figma/deep-recess.svg");
+}
+
+.convex-rounded-CRT {
+  position: absolute;
+  inset: 0;
+  width: 90%;
+
+  margin: auto;
+
+  aspect-ratio: 1.281;
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+
+  background-image: url("/figma/convex-rounded-CRT.svg");
+}
+
+.wood-chat-panel {
+  margin: 9% 9% 4%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  /* background-color: #2a190f; */
+
+  aspect-ratio: 1.32;
+}
+
+.input-div {
+  height: 100%;
+  align-items: center;
+  width: 90%;
+}
+
+.input {
+  height: 100%;
+  width: 100%;
+
+  padding: 1% 3%;
+
+  border-radius: var(--radius-input);
+  border: 1.5px solid var(--color-ink);
+
+  font-family: var(--font-noto-sans-sc);
+  font-size: 0.65rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.625rem;
+}
+
+.send-button {
+  display: flex;
+  width: 8.9%;
+  height: 100%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+
+  overflow: hidden;
+
+  border-radius: 999px;
+  border: 1.5px solid var(--color-ink);
+  background: var(--color-wood-yellow);
+}
+
+.send-icon {
+  width: 55%;
+  height: 55%;
+  flex-shrink: 0;
+}
+
+.speaker-n-dials-property {
+  position: absolute;
+  top: 19.88%;
+  left: 75.88%;
+
+  width: 13.1%;
+  height: 59.9%;
+}
+
+/* 86.875   65.1563 */
+/* 11.28169  38.85244 */
+/* 11.2817   19.4262 */
+/* 47.2986   36.9219 */
+/* 40   3.5 */
+/* 40.4375rem */

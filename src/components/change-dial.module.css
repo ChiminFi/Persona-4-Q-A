@@ -1,0 +1,26 @@
+.change-dial {
+  position: relative;
+
+  width: 73%;
+  aspect-ratio: 1;
+
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+  margin: auto;
+  margin-bottom: 0;
+
+  background-image: url("/figma/change-channel.svg");
+}
+
+.pointer {
+  position: absolute;
+
+  left: 50%;
+  top: 47%;
+
+  width: 2.5%;
+  aspect-ratio: 0.081;
+
+  transform-origin: 50% 100%;
+  transform: translate(-50%, -100%) rotate(190deg);
+}

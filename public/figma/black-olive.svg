@@ -1,0 +1,12 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="1440" height="1024" viewBox="0 0 1440 1024" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Deep Black Olive">
+<path id="Vector" d="M0 0H768L0 893.155V0Z" fill="url(#paint0_linear_0_4)"/>
+</g>
+<defs>
+<linearGradient id="paint0_linear_0_4" x1="384" y1="0" x2="384" y2="893.156" gradientUnits="userSpaceOnUse">
+<stop stop-color="#10120A"/>
+<stop offset="0.45" stop-color="#1B1E10"/>
+<stop offset="1" stop-color="#282919"/>
+</linearGradient>
+</defs>
+</svg>
