@@ -23,14 +23,14 @@ function MessageViewport() {
     >
       <div className={styles["messages"]}>
         <div
-          className={`${styles["message-bubble"]} ${styles["message-row-user"]}`}
-        >
-          2333377777777777777777777777777777777777
-        </div>
-        <div
           className={`${styles["message-bubble"]} ${styles["message-row-assistant"]}`}
         >
-          233377777777777777777777777777777777788888888888888888888888888888888
+          嘿, 快来询问我关于p4g 的任何事吧
+        </div>
+        <div
+          className={`${styles["message-bubble"]} ${styles["message-row-user"]}`}
+        >
+          菜菜子超棒!
         </div>
       </div>
     </div>
