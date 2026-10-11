@@ -1,0 +1,63 @@
+.input-div {
+  height: 100%;
+  align-items: center;
+  width: 90%;
+}
+
+.composer-scope {
+  height: 100%;
+}
+
+.composer {
+  height: 100%;
+  display: flex;
+  align-items: flex-end;
+}
+
+/* PromptInputBody is display: contents, but still wraps textarea in the DOM. */
+.composer > [data-slot="input-group"] {
+  height: auto;
+  border-radius: 6px;
+}
+
+.composer > [data-slot="input-group"]:focus-within {
+  outline: none;
+  box-shadow: 0 0 0 1px var(--color-ink);
+}
+
+.input {
+  min-height: 2rem;
+  max-height: max(2rem, var(--composer-max-height, 6rem));
+  height: auto;
+  width: 100%;
+  overflow-y: auto;
+
+  /* lh  line height */
+  padding: calc((2rem - 1lh) / 2) 0.75rem;
+  padding-right: 2rem;
+
+  font-family: var(--font-noto-sans-sc);
+  font-size: 0.65rem;
+  line-height: 1.4;
+
+  scrollbar-width: 0;
+  scrollbar-color: transparent transparent;
+  scrollbar-gutter: stable;
+}
+
+.send-button {
+  position: absolute;
+  right: 0.25rem;
+  bottom: 0.25rem;
+
+  border-radius: 6px;
+  /* border: 1.5px solid var(--color-ink); */
+  background: var(--color-wood-yellow);
+}
+
+.send-icon {
+  width: 60%;
+  height: 60%;
+
+  transform: translate(5%);
+}

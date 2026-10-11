@@ -1,6 +1,7 @@
 import MessageViewport from "@/components/MessageViewport";
 import styles from "./tv.module.css";
 import SpeakerNDials from "@/components/SpeakerNDials";
+import ChatComposer from "@/components/ChatComposer";
 
 function Tv() {
   return (
@@ -25,29 +26,12 @@ function Tv() {
         <div className={styles["deep-recess"]}>
           <div className={styles["convex-rounded-CRT"]}>
             <div className={styles["wood-chat-panel"]}>
-              <div className="w-full h-[83.9%]">
+              <div className="w-full  flex-1 min-h-0">
                 <MessageViewport />
               </div>
 
-              <div className="px-[1%] h-[12%] flex justify-between">
-                <div className={styles["input-div"]}>
-                  <input
-                    className={styles["input"]}
-                    type="text"
-                    aria-label="信息输入"
-                    placeholder="请输入文本..."
-                  />
-                </div>
-                <button className={styles["send-button"]} aria-label="发送信息">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    className={styles["send-icon"]}
-                  >
-                    <path d="M3 3L21 12L3 21L6.17647 12L3 3Z" fill="#0B0B09" />
-                  </svg>
-                </button>
+              <div className="px-[1%] shrink-0">
+                <ChatComposer />
               </div>
             </div>
           </div>
