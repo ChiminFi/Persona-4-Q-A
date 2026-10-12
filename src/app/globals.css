@@ -12,9 +12,29 @@
   --radius-input: 30px;
   --color-ink: #0b0b09;
   --color-wood-yellow: #ecd21d;
+  --color-wood-yellow-hover: #e2c400;
+  --color-wood-yellow-soft: #f2e37a;
+  --color-wood-assistant-bg: #ede4be;
+  --color-wood-assistant-bg-light: #f3ebcb;
   --radius-bubble: 10px;
   --color-wood-message-outline: rgb(133 122 77 / 35%);
   --color-agent-wood: #d9c38f;
+
+  --yellow-50: #fffbe6;
+  --yellow-100: #fff5bf;
+  --yellow-200: #fbea83;
+  --yellow-300: #f6df4d;
+  --yellow-400: #f1d62c;
+  --yellow-500: #ecd21d;
+  --yellow-600: #c8ae16;
+  --yellow-700: #9f8915;
+  --yellow-800: #756615;
+  --yellow-900: #4d4516;
+
+  --composer-bg: #f3ecd0;
+  --composer-border: #8b7d53;
+  --composer-ring: var(--yellow-600);
+
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);

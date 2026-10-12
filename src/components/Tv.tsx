@@ -1,7 +1,6 @@
-import MessageViewport from "@/components/MessageViewport";
-import styles from "./tv.module.css";
+import ChatPanel from "@/components/ChatPanel";
 import SpeakerNDials from "@/components/SpeakerNDials";
-import ChatComposer from "@/components/ChatComposer";
+import styles from "./tv.module.css";
 
 function Tv() {
   return (
@@ -26,13 +25,7 @@ function Tv() {
         <div className={styles["deep-recess"]}>
           <div className={styles["convex-rounded-CRT"]}>
             <div className={styles["wood-chat-panel"]}>
-              <div className="w-full  flex-1 min-h-0">
-                <MessageViewport />
-              </div>
-
-              <div className="px-[1%] shrink-0">
-                <ChatComposer />
-              </div>
+              <ChatPanel />
             </div>
           </div>
         </div>

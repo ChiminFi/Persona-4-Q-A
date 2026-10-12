@@ -1,0 +1,19 @@
+.chat-panel {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  gap: 2%;
+}
+
+.message-viewport-container {
+  width: 100%;
+  min-height: 0;
+
+  flex: 1;
+
+  box-shadow: 0 4px 4px -4px rgba(0, 0, 0, 0.25);
+}

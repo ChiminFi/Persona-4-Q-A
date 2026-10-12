@@ -9,10 +9,16 @@ import {
 } from "@/components/ai-elements/prompt-input";
 import styles from "./chat-composer.module.css";
 import tvStyles from "./tv.module.css";
+import { ChatStatus } from "@/types/chat";
+
+interface ChatComposerProps {
+  onSendMessage: (message: string) => void;
+  status: ChatStatus;
+}
 
 const MAX_CHAT_HEIGHT_PERCENT = 20;
 
-function ChatComposer() {
+function ChatComposer({ onSendMessage, status }: ChatComposerProps) {
   const scopeRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -39,7 +45,8 @@ function ChatComposer() {
   }, []);
 
   const handleSubmit = ({ text }: { text: string }) => {
-    console.log(text);
+    if (!text.length) return;
+    onSendMessage(text);
   };
 
   return (
@@ -55,9 +62,11 @@ function ChatComposer() {
         </PromptInputBody>
 
         <PromptInputSubmit
+          disabled={status == "loading" || status === "streaming"}
           className={styles["send-button"]}
           size="icon-xs"
           variant="outline"
+          aria-label="提交信息"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"

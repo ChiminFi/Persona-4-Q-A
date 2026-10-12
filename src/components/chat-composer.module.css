@@ -1,15 +1,12 @@
-.input-div {
-  height: 100%;
-  align-items: center;
-  width: 90%;
-}
-
 .composer-scope {
   height: 100%;
+  width: 100%;
 }
 
 .composer {
   height: 100%;
+  width: 100%;
+
   display: flex;
   align-items: flex-end;
 }
@@ -17,12 +14,13 @@
 /* PromptInputBody is display: contents, but still wraps textarea in the DOM. */
 .composer > [data-slot="input-group"] {
   height: auto;
-  border-radius: 6px;
+  border: none;
+
+  position: relative;
 }
 
 .composer > [data-slot="input-group"]:focus-within {
-  outline: none;
-  box-shadow: 0 0 0 1px var(--color-ink);
+  box-shadow: none;
 }
 
 .input {
@@ -32,12 +30,13 @@
   width: 100%;
   overflow-y: auto;
 
+  /* border: 0.5px solid var(--color-ink); */
+
   /* lh  line height */
   padding: calc((2rem - 1lh) / 2) 0.75rem;
-  padding-right: 2rem;
 
   font-family: var(--font-noto-sans-sc);
-  font-size: 0.65rem;
+  font-size: 0.8rem;
   line-height: 1.4;
 
   scrollbar-width: 0;
@@ -45,14 +44,34 @@
   scrollbar-gutter: stable;
 }
 
-.send-button {
+.composer > [data-slot="input-group"]::after {
   position: absolute;
-  right: 0.25rem;
-  bottom: 0.25rem;
+  content: "";
+  left: 0.7rem;
+  right: 3rem;
+  bottom: 0;
+
+  height: 1px;
+  background: var(--yellow-800);
+  pointer-events: none;
+}
+
+.send-button {
+  border: 0.5px solid var(--yellow-800);
+
+  margin: 0.15rem;
+  margin-top: auto;
 
   border-radius: 6px;
+
+  width: 1.7rem;
+  height: 1.7rem;
   /* border: 1.5px solid var(--color-ink); */
   background: var(--color-wood-yellow);
+}
+
+.send-button:focus-within {
+  box-shadow: 0 0 0 0.5px var(--color-ink);
 }
 
 .send-icon {

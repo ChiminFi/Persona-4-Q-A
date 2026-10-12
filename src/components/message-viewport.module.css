@@ -1,0 +1,99 @@
+.message-viewport {
+  position: relative;
+
+  min-height: 0;
+  height: 100%;
+  width: 100%;
+
+  /* border-bottom: 1px solid rgb(139, 125, 83, 0.5); */
+}
+
+.scroll-area {
+  scrollbar-gutter: stable;
+
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+  transition: scrollbar-color 0.4s ease;
+}
+
+.user-message {
+  background-color: rgb(from var(--color-wood-yellow) r g b/ 0.8);
+}
+
+.assistant-message {
+  /* border: 1px solid var(--color-wood-message-outline); */
+  background: var(--color-wood-assistant-bg);
+}
+
+.error-message {
+  border: 1px solid rgb(150 70 50 / 0.35);
+  background: rgb(150 70 50 / 0.08);
+}
+
+.retry-button {
+  align-self: flex-end;
+  background: var(--yellow-300);
+  color: var(--color-ink);
+}
+
+.retry-button:hover {
+  background: var(--yellow-500);
+}
+
+/* 上下 blur */
+.message-viewport::before,
+.message-viewport::after {
+  content: "";
+  position: absolute;
+  left: 2%;
+  width: 96%;
+  height: 2rem;
+
+  z-index: 10;
+  pointer-events: none;
+
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+}
+
+.message-viewport::before {
+  top: -0.25rem;
+  -webkit-mask-image: linear-gradient(to bottom, #000, transparent);
+  mask-image: linear-gradient(to bottom, #000, transparent);
+}
+
+.message-viewport::after {
+  bottom: -0.25rem;
+  -webkit-mask-image: linear-gradient(to top, #000, transparent);
+  mask-image: linear-gradient(to top, #000, transparent);
+}
+
+.scroll-button {
+  z-index: 20;
+}
+
+.is-scrolling {
+  scrollbar-color: rgb(133 122 77 / 55%) transparent;
+  transition-duration: 0.12s;
+}
+
+.scroll-area.is-scrolling::-webkit-scrollbar-thumb {
+  background: rgb(133 122 77 / 55%);
+}
+
+.scroll-area::-webkit-scrollbar {
+  width: 0.4rem;
+}
+
+.scroll-area::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.scroll-area::-webkit-scrollbar-thumb {
+  background: transparent;
+  border-radius: 999px;
+}
+
+.scroll-area.is-scrolling::-webkit-scrollbar-thumb:hover {
+  background: rgb(133 122 77 / 55%);
+}
