@@ -1,6 +1,6 @@
 export type ChatStatus = "idle" | "loading" | "streaming" | "error";
 
-type ChatSource = {
+export type ChatSource = {
   title: string;
   href: string;
 };

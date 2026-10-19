@@ -98,3 +98,115 @@
     //     </div>
     //   </div>
     // </div>
+
+/\*
+
+{sources?.length ? (
+<Sources>
+<SourcesTrigger count={sources.length} />
+<SourcesContent>
+{sources.map((source) => (
+
+<Source
+   key={source.href}
+   href={source.href}
+   title={source.title}
+                      />
+))}
+</SourcesContent>
+</Sources>
+) : null}
+
+              */
+
+/_
+// return (
+// // 对应 Message
+// <Message from={role} key={key}>
+// <MessageContent
+// className={role === "user" ? styles["user-message"] : ""}
+// >
+// {/_ 分辨 error _/}
+// {kind === "error" ? (
+// <div className="flex gap-2">
+// <Alert
+// variant="destructive"
+// className={styles["error-message"]}
+// >
+// <AlertCircleIcon />
+// <AlertTitle>Failed to generate response</AlertTitle>
+// <AlertDescription>{content}</AlertDescription>
+// </Alert>
+// <Button
+// variant="secondary"
+// className={styles["retry-button"]}
+// onClick={() => onRetry(key)}
+// >
+// <RotateCcw className="size-4" />
+// Retry
+// </Button>
+// </div>
+// ) : // 分辨assistant 流式
+// role === "assistant" ? (
+// <MessageResponse>{content}</MessageResponse>
+// ) : (
+// // user
+// content
+// )}
+// </MessageContent>
+// {sources?.length ? <Sources sources={sources} /> : null}
+// </Message>
+// );
+_/
+
+```
+const MAX_CHAT_HEIGHT_PERCENT = 20;
+
+  // const scopeRef = useRef<HTMLDivElement>(null);
+
+  // useEffect(() => {
+  //   const scope = scopeRef.current;
+  //   // 通过该scope 向上找到 chatView
+  //   const chatViewport = scope?.closest(`.${tvStyles["wood-chat-panel"]}`);
+  //   if (!scope || !chatViewport) return;
+
+  //   // 设置scope 的自定义变量为chatView 的指定百分之高度
+  //   const updateMaxHeight = () => {
+  //     scope.style.setProperty(
+  //       "--composer-max-height",
+  //       // 获取view 高度
+  //       `${(chatViewport.getBoundingClientRect().height * MAX_CHAT_HEIGHT_PERCENT) / 100}px`,
+  //     );
+  //   };
+  //   const observer = new ResizeObserver(updateMaxHeight);
+  //   // 观察 view 变化
+  //   observer.observe(chatViewport);
+
+  //   // 初次计算
+  //   updateMaxHeight();
+  //   return () => observer.disconnect();
+  // }, []);
+```
+
+```
+<ConversationEmptyState
+            icon={<MessageSquareIcon className="size-6" />}
+            title="Start a conversation"
+          />
+```
+
+```
+    // <Conversation
+    //   className={styles["message-viewport"]}
+    //   onScrollCapture={onScroll}
+    // >
+    //   <ConversationContent
+    //     className="pr-1.5"
+    //     scrollClassName={`${styles["scroll-area"]} ${isScrolling ? styles["is-scrolling"] : ""}`}
+    //   >
+
+    //   </ConversationContent>
+
+    //   <ConversationScrollButton className={styles["scroll-button"]} />
+    // </Conversation>
+```

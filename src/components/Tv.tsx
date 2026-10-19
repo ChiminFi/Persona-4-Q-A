@@ -1,8 +1,8 @@
-import ChatPanel from "@/components/ChatPanel";
 import SpeakerNDials from "@/components/SpeakerNDials";
+import type { ReactNode } from "react";
 import styles from "./tv.module.css";
 
-function Tv() {
+function Tv({ children }: { children: ReactNode }) {
   return (
     <div className={styles["tv"]}>
       <div className={styles["scene"]}>
@@ -24,9 +24,7 @@ function Tv() {
         <div className={styles["original-rectangle"]} />
         <div className={styles["deep-recess"]}>
           <div className={styles["convex-rounded-CRT"]}>
-            <div className={styles["wood-chat-panel"]}>
-              <ChatPanel />
-            </div>
+            <div className={styles["wood-chat-panel"]}>{children}</div>
           </div>
         </div>
 

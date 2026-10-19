@@ -11,13 +11,11 @@
 .scroll-area {
   scrollbar-gutter: stable;
 
+  scroll-behavior: smooth;
+
   scrollbar-width: thin;
   scrollbar-color: transparent transparent;
   transition: scrollbar-color 0.4s ease;
-}
-
-.user-message {
-  background-color: rgb(from var(--color-wood-yellow) r g b/ 0.8);
 }
 
 .assistant-message {
@@ -25,23 +23,17 @@
   background: var(--color-wood-assistant-bg);
 }
 
-.error-message {
+/* .error-message {
   border: 1px solid rgb(150 70 50 / 0.35);
   background: rgb(150 70 50 / 0.08);
-}
-
-.retry-button {
-  align-self: flex-end;
-  background: var(--yellow-300);
-  color: var(--color-ink);
-}
+} */
 
 .retry-button:hover {
   background: var(--yellow-500);
 }
 
 /* 上下 blur */
-.message-viewport::before,
+/* .message-viewport::before,
 .message-viewport::after {
   content: "";
   position: absolute;
@@ -66,9 +58,10 @@
   bottom: -0.25rem;
   -webkit-mask-image: linear-gradient(to top, #000, transparent);
   mask-image: linear-gradient(to top, #000, transparent);
-}
+} */
 
 .scroll-button {
+  border-radius: calc(infinity * 1px);
   z-index: 20;
 }
 
@@ -96,4 +89,10 @@
 
 .scroll-area.is-scrolling::-webkit-scrollbar-thumb:hover {
   background: rgb(133 122 77 / 55%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-area {
+    scroll-behavior: auto;
+  }
 }

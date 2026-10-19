@@ -25,7 +25,7 @@
 
 .input {
   min-height: 2rem;
-  max-height: max(2rem, var(--composer-max-height, 6rem));
+  max-height: max(2rem, 20cqh);
   height: auto;
   width: 100%;
   overflow-y: auto;
@@ -48,7 +48,7 @@
   position: absolute;
   content: "";
   left: 0.7rem;
-  right: 3rem;
+  right: 1rem;
   bottom: 0;
 
   height: 1px;

@@ -197,14 +197,8 @@ function ChatPanel() {
     }, 1700);
   }
 
-  // function isThisMessageError(key: string) {
-  //   if (!visibleMessages.length) return false;
-  //   const theMessage = visibleMessages.find((message) => message.key === key);
-
-  //   return lastMessage?.kind === "error";
-  // }
-
   function retry(key: string) {
+    if (status !== "idle") return;
     if (!visibleMessages.length) return;
     const index = visibleMessages.findIndex((message) => message.key === key);
 

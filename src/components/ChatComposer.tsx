@@ -1,67 +1,62 @@
 "use client";
 
-import { useEffect, useRef } from "react";
 import {
-  PromptInput,
-  PromptInputBody,
-  PromptInputSubmit,
-  PromptInputTextarea,
-} from "@/components/ai-elements/prompt-input";
-import styles from "./chat-composer.module.css";
-import tvStyles from "./tv.module.css";
+  InputGroup,
+  InputGroupButton,
+  InputGroupTextarea,
+} from "@/components/ui/input-group";
 import { ChatStatus } from "@/types/chat";
+import React, { useState } from "react";
+import styles from "./chat-composer.module.css";
 
 interface ChatComposerProps {
   onSendMessage: (message: string) => void;
   status: ChatStatus;
 }
 
-const MAX_CHAT_HEIGHT_PERCENT = 20;
-
 function ChatComposer({ onSendMessage, status }: ChatComposerProps) {
-  const scopeRef = useRef<HTMLDivElement>(null);
+  const formRef = React.useRef<HTMLFormElement>(null);
+  const [text, setText] = useState("");
 
-  useEffect(() => {
-    const scope = scopeRef.current;
-    // 通过该scope 向上找到 chatView
-    const chatViewport = scope?.closest(`.${tvStyles["wood-chat-panel"]}`);
-    if (!scope || !chatViewport) return;
+  function handleKeyDown(e: React.KeyboardEvent<HTMLTextAreaElement>) {
+    if (e.key !== "Enter" || e.shiftKey) return;
+    // 输入法选词
+    if (e.nativeEvent.isComposing) return;
 
-    // 设置scope 的自定义变量为chatView 的指定百分之高度
-    const updateMaxHeight = () => {
-      scope.style.setProperty(
-        "--composer-max-height",
-        // 获取view 高度
-        `${(chatViewport.getBoundingClientRect().height * MAX_CHAT_HEIGHT_PERCENT) / 100}px`,
-      );
-    };
-    const observer = new ResizeObserver(updateMaxHeight);
-    // 观察 view 变化
-    observer.observe(chatViewport);
+    e.preventDefault();
+    formRef.current?.requestSubmit();
+  }
 
-    // 初次计算
-    updateMaxHeight();
-    return () => observer.disconnect();
-  }, []);
+  function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    if (!text.trim()) return;
+    if (status === "loading" || status === "streaming") return;
 
-  const handleSubmit = ({ text }: { text: string }) => {
-    if (!text.length) return;
     onSendMessage(text);
-  };
+    setText("");
+  }
 
   return (
-    <div ref={scopeRef} className={styles["composer-scope"]}>
-      <PromptInput className={styles["composer"]} onSubmit={handleSubmit}>
-        <PromptInputBody>
-          <PromptInputTextarea
+    <div className={styles["composer-scope"]}>
+      <form
+        className={styles["composer"]}
+        ref={formRef}
+        onSubmit={handleSubmit}
+      >
+        <InputGroup>
+          <InputGroupTextarea
+            value={text}
+            onChange={(e) => setText(e.target.value)}
+            onKeyDown={handleKeyDown}
             className={styles["input"]}
             rows={1}
             aria-label="消息输入"
             placeholder="请输入文本..."
           />
-        </PromptInputBody>
+        </InputGroup>
 
-        <PromptInputSubmit
+        <InputGroupButton
+          type="submit"
           disabled={status == "loading" || status === "streaming"}
           className={styles["send-button"]}
           size="icon-xs"
@@ -76,8 +71,8 @@ function ChatComposer({ onSendMessage, status }: ChatComposerProps) {
           >
             <path d="M3 3L21 12L3 21L6.17647 12L3 3Z" fill="#0B0B09" />
           </svg>
-        </PromptInputSubmit>
-      </PromptInput>
+        </InputGroupButton>
+      </form>
     </div>
   );
 }
