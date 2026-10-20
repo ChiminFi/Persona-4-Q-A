@@ -61,3 +61,13 @@
     rgba(108, 87, 37, 0.4) 100%
   );
 }
+
+@media (width<48rem) {
+  .warm-yellow {
+    display: none;
+  }
+
+  .background {
+    background-color: var(--composer-bg);
+  }
+}

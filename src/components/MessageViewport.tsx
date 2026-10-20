@@ -51,6 +51,7 @@ function MessageViewport({
 
   return (
     <MessageScrollerProvider autoScroll>
+      {/* 等于0 时 显示占位符标志 */}
       {visibleMessages.length === 0 ? (
         <div className="inset-0">
           <Suspense fallback={null}>

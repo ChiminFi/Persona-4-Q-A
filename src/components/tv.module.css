@@ -21,6 +21,15 @@
   transform: translate(3%);
 }
 
+.desktop-decoration {
+  position: absolute;
+  inset: 0;
+}
+
+.mobile-decoration {
+  display: none;
+}
+
 .soft-ground-shadow {
   position: absolute;
   left: 14.17%;
@@ -104,14 +113,6 @@
   background-image: url("/figma/convex-rounded-CRT.svg");
 }
 
-.wood-chat-panel {
-  margin: 9% 7% 4% 9%;
-
-  /* background-color: #2a190f; */
-
-  aspect-ratio: 1.32;
-}
-
 .speaker-n-dials-property {
   position: absolute;
   top: 19.88%;
@@ -121,9 +122,103 @@
   height: 59.9%;
 }
 
+.wood-chat-panel {
+  position: absolute;
+  left: 20.767%;
+  top: 28.131%;
+  width: 45.761%;
+
+  /* background-color: #2a190f; */
+
+  aspect-ratio: 1.32;
+}
+
 /* 86.875   65.1563 */
 /* 11.28169  38.85244 */
 /* 11.2817   19.4262 */
 /* 47.2986   36.9219 */
 /* 40   3.5 */
 /* 40.4375rem */
+
+@media (width<48rem) {
+  .scene {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: auto;
+    transform: none;
+  }
+
+  .desktop-decoration {
+    display: none;
+  }
+
+  .mobile-decoration {
+    display: block;
+    position: absolute;
+    inset: 0;
+    background-color: #7a321b;
+
+    pointer-events: none;
+  }
+
+  .red-brown-timber {
+    position: absolute;
+    inset: 3px;
+
+    border-radius: 10px;
+    background: linear-gradient(
+      180deg,
+      #a8522b 0%,
+      #5c2112 25%,
+      #87351c 50%,
+      #3c170e 75%,
+      #9b4926 100%
+    );
+  }
+
+  .silver-hairline {
+    position: absolute;
+    inset: 8px;
+
+    border-radius: 40px;
+    background: linear-gradient(
+      180deg,
+      #f8edd0 0%,
+      #615b4c 25%,
+      #d6ceba 50%,
+      #696150 75%,
+      #f6edd4 100%
+    );
+  }
+
+  .deep-metal-recess {
+    position: absolute;
+    inset: 11px;
+
+    border-radius: 37px;
+    background: linear-gradient(
+      180deg,
+      #21231b 0%,
+      #4b4839 33.33%,
+      #1a1b14 66.67%,
+      #69614b 100%
+    );
+  }
+
+  .glass {
+    position: absolute;
+    inset: 14px;
+
+    border-radius: 37px;
+    background: var(--composer-bg);
+  }
+
+  .wood-chat-panel {
+    inset: 34px;
+    width: auto;
+    height: auto;
+    aspect-ratio: auto;
+  }
+}
+
+/* w 390  h 844 */

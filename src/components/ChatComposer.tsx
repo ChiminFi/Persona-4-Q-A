@@ -6,17 +6,23 @@ import {
   InputGroupTextarea,
 } from "@/components/ui/input-group";
 import { ChatStatus } from "@/types/chat";
-import React, { useState } from "react";
+import React from "react";
 import styles from "./chat-composer.module.css";
 
 interface ChatComposerProps {
   onSendMessage: (message: string) => void;
+  onDraftChange: (value: string) => void;
   status: ChatStatus;
+  draft: string;
 }
 
-function ChatComposer({ onSendMessage, status }: ChatComposerProps) {
+function ChatComposer({
+  onSendMessage,
+  status,
+  draft,
+  onDraftChange,
+}: ChatComposerProps) {
   const formRef = React.useRef<HTMLFormElement>(null);
-  const [text, setText] = useState("");
 
   function handleKeyDown(e: React.KeyboardEvent<HTMLTextAreaElement>) {
     if (e.key !== "Enter" || e.shiftKey) return;
@@ -29,11 +35,11 @@ function ChatComposer({ onSendMessage, status }: ChatComposerProps) {
 
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    if (!text.trim()) return;
+    if (!draft.trim()) return;
     if (status === "loading" || status === "streaming") return;
 
-    onSendMessage(text);
-    setText("");
+    onSendMessage(draft);
+    onDraftChange("");
   }
 
   return (
@@ -45,8 +51,8 @@ function ChatComposer({ onSendMessage, status }: ChatComposerProps) {
       >
         <InputGroup>
           <InputGroupTextarea
-            value={text}
-            onChange={(e) => setText(e.target.value)}
+            value={draft}
+            onChange={(e) => onDraftChange(e.target.value)}
             onKeyDown={handleKeyDown}
             className={styles["input"]}
             rows={1}
