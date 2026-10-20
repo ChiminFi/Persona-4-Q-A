@@ -2,127 +2,119 @@
 
 [English](README.en.md) · [简体中文](README.md)
 
-A Persona 4 Golden inspired web interface built around a retro wooden TV, with a game-guide AI assistant planned for later development.
+A Persona 4 Golden inspired game-guide AI portfolio project. The current delivery is a **desktop and small-screen WOOD interface with local simulated chat**. Real AI, retrieval, and backend services are not connected.
 
-A personal portfolio project spanning **Frontend Engineering** and, in future stages, **AI Application Engineering**. The current focus is translating a Figma design into a desktop UI shell.
+## Current Status
 
-## Project Status
+Reviewed on 2026-10-20 (Asia/Taipei), including working-tree changes after 8f7d102 that return conversation state to ChatPanel and simplify input management.
 
-**In progress — desktop WOOD UI shell.** The TV scene, chat presentation, and composer visuals are implemented. Messages are hardcoded examples; the input accepts text, but the send button has no submission logic. No AI services or persistent conversations are connected.
+- Implemented: submission, multi-turn demo messages, loading, simulated word streaming, error/retry, static Sources, auto scrolling, and an expanding composer.
+- One chat DOM tree is shared across layouts. CSS below 48rem changes decorations and geometry without remounting chat or running duplicate chat effects.
+- ChatPanel owns messages, status, send logic, and timers. ChatComposer uses an uncontrolled textarea, reads FormData on submission, and resets the form after sending. Stable chat DOM preserves messages and unsent input across breakpoints; refresh/navigation persistence is not provided.
+- The owner accepted current browser responsiveness and interactions and retained the existing composer appearance. Exact mobile Figma parity is not claimed.
+- **Physical-device keyboard and safe-area checks are deferred.** Extreme unbroken text, wide code blocks/tables, expanded Sources, and very short desktop coverage need focused validation. There are no height-specific desktop rules yet.
 
-Proportional sizing provides a responsive foundation. Mobile layout and short-viewport handling are not complete.
-
-## Preview
+## Preview and Design
 
 ![Desktop WOOD theme with Chinese sample messages](docs/images/wood-large-zh-CN.webp)
 
-Existing repository screenshot of the desktop WOOD theme. The messages illustrate the UI rather than an AI conversation.
+Desktop WOOD preview.
 
-## Features
+<p>
+  <img src="docs/images/wood-mobile-zh-CN.webp" alt="Small-screen WOOD chat interface" width="280" />
+</p>
 
-- Wooden TV shell with antenna, speaker grille, ground shadow, and CRT-style screen.
-- Yellow and dark background decorations with diagonal and halftone elements.
-- Decorative dials with separate SVG pointers and defined rotation pivots.
-- Distinct user and assistant bubbles in a DOM-based message viewport.
-- Composer input and send-button presentation with accessible names.
-- Scrollbar styling that becomes visible during scrolling and fades after inactivity; long-message overflow handling still needs validation.
-- Percentage-based scene geometry, aspect ratios, and clamped message typography.
-- A separate CRT distortion experiment at `/crt-distortion-test`, with filter and rendering-scale controls. It is not integrated into the main screen.
+Small-screen WOOD preview with a dedicated frame and shared chat area. Both screenshots show local demo content rather than live AI responses; they do not establish physical-device keyboard verification.
 
-## Tech Stack
+[Mobile Figma reference: 390 × 844, node 21:1484](https://www.figma.com/design/jJbm601weSdkUNfCRVt2xE/Untitled?node-id=21-1484). Current composer and message styling intentionally retain accepted differences.
 
-| Technology                  | Role                                               |
-| --------------------------- | -------------------------------------------------- |
-| Next.js 16.4.0 / App Router | Application structure and routes                   |
-| React 19.3.0                | UI components and local interaction state          |
-| TypeScript                  | Static typing with strict mode                     |
-| Tailwind CSS 4              | Basic layout utilities                             |
-| CSS Modules                 | Component styling, TV geometry, and visual effects |
-| SVG                         | Figma-exported artwork and inline pointers/icons   |
+## Implemented Features
 
-Chinese typography uses Noto Sans SC through `next/font/google`.
+- Desktop wooden TV, antenna, speaker, decorative dials, ground shadow, and CRT screen; separate timber, silver, metal-recess, and glass decoration layers for small screens.
+- Stable chat slot alongside decorations. Desktop preserves percentage positioning and aspect ratios; small screens use viewport height and edge insets.
+- shadcn MessageScroller / Message / Bubble / Trace, with AI Elements MessageResponse / Streamdown Markdown rendering.
+- Enter submission, Shift+Enter newline, IME composition handling, busy submission guards, FormData submission and form reset, and automatic input growth.
+- Independent /crt-distortion-test experiment; its distortion filter is not part of the main chat.
 
-## Project Structure
+## Simulation Limits
 
-```text
-docs/images/                      # README screenshot
-public/
-  figma/                          # Exported visual SVG assets
-  crt-distortion-test/            # Displacement map for the experiment
-src/
-  app/
-    page.tsx                      # Main WOOD scene
-    layout.tsx                    # Root layout and font setup
-    globals.css                   # Tailwind import and shared CSS variables
-    crt-distortion-test/          # Standalone CRT experiment route
-  components/
-    Background.tsx                # Background decorations
-    Tv.tsx                        # TV scene, screen, and composer
-    SpeakerNDials.tsx             # Speaker and control plate
-    DecorativeDial.tsx            # Small dial and pointer pivot
-    ChangeDial.tsx                # Large channel dial
-    MessageViewport.tsx           # Sample bubbles and scrollbar state
-    *.module.css                  # Component-scoped styles
-```
+Demo messages append every 500ms. Submission waits 1700ms and then appends a fixed reply word by word every 80ms. This is neither model inference nor network streaming.
 
-## Current Progress
+Submitting error (trimmed and case-insensitive) creates an error card. Retry appends the preceding user content as a new turn rather than replacing the failed turn, so retrying error fails again. Errors persist in message kind while status returns to idle.
 
-| Area                                                     | Status                                                            |
-| -------------------------------------------------------- | ----------------------------------------------------------------- |
-| Desktop WOOD theme, TV shell, CRT screen, and background | Implemented UI                                                    |
-| Decorative dials and pointer geometry                    | Implemented visuals; no dial interaction                          |
-| Bubbles, viewport, composer, and scrollbar styling       | UI implemented; sample messages only, overflow validation pending |
-| Responsive proportional layout                           | Foundation in place; mobile layout pending                        |
-| SILHOUETTE theme                                         | Not implemented                                                   |
-| LLM, RAG, Web Search, Sources / Citations                | Not implemented                                                   |
-| Supabase and cloud chat history                          | Not implemented                                                   |
-| Agent and MCP integration                                | Not implemented                                                   |
+Sources use hardcoded demo data, including example.com placeholders. They are not retrieved evidence or verified citations. The ai SDK is installed, but no real chat transport, provider request, or API route is connected.
 
-## Roadmap
+## Stack
 
-- Validate message overflow and refine viewport sizing, keyboard access, and small-screen usability.
-- Add a dedicated mobile layout and the SILHOUETTE theme.
-- Implement local message submission and conversation UI states.
-- Connect an LLM, then explore RAG for game-guide questions.
-- Add Web Search and Sources / Citations.
-- Add Supabase-backed cloud chat history.
-- Explore Agent and MCP integration in later stages.
+| Technology | Current use |
+| --- | --- |
+| Next.js 16.4.0 / React 19.3.0 / TypeScript | App Router, components, state |
+| Tailwind CSS 4 / CSS Modules | Utilities, TV geometry, responsiveness |
+| shadcn/ui: Base UI + Nova | UI primitives |
+| @shadcn/react / AI Elements / Streamdown | Scrolling, messages, Markdown |
+| SVG / CSS gradients | Desktop assets and mobile frame |
+| ai (^7.0.137 in package.json) | Installed; no real chat integration |
 
-These are planned areas of work, not available capabilities or a fixed delivery schedule.
+Geist and Noto Sans SC are loaded through next/font/google.
 
-## Local Development
+## Component Structure
 
-Requirements: **Node.js 20.9 or newer** and **npm**. The current UI shell needs no API keys, Supabase setup, or environment variables. Dependency installation and Google font fetching require network access.
+~~~text
+Page
+├─ Background
+└─ Tv: stable scene
+   ├─ desktop-decoration
+   ├─ mobile-decoration
+   └─ wood-chat-panel
+      └─ ChatPanel: messages / status / send / retry / timers
+         ├─ MessageViewport → MessageItem → Sources / AlertCard
+         └─ ChatComposer: uncontrolled input / FormData / form.reset()
+~~~
 
-```bash
+Page, Tv, and the root layout do not declare use client; the chat client boundary is ChatPanel. Responsive layout uses CSS, with no matchMedia shell replacement or duplicate hidden chat instances.
+
+Source lives in src/app, src/components, and src/types/chat.ts. Shared colors are in src/app/globals.css; exported assets are in public/figma.
+
+## Progress and Next Work
+
+| Area | Status |
+| --- | --- |
+| Desktop / small-screen WOOD and simulated chat | Implemented; current browser behavior accepted by owner |
+| Physical-device keyboard / safe-area | Verification deferred |
+| SILHOUETTE / theme switching | Not implemented |
+| Real LLM, RAG, Web Search, evidence-backed Sources | Not implemented |
+| Database / persistence | Not implemented; cloud accounts and long-term chat memory are outside MVP |
+
+Choose one bounded next step when needed: address a frontend issue, resume device checks, implement the other theme, or separately plan real AI integration. Planned backend direction remains local retrieval first, Web Search fallback, and separate retrieval/answer evaluation; these are not available capabilities.
+
+Code-review follow-ups: move replyTimer nulling to timeout callback entry, clear the scrollbar timeout on unmount, and review the local-time EmptyCard greeting for server/client time differences. These are follow-up items; this README edit did not implement or modify those application changes.
+
+Planning/knowledge documents live in the sibling Persona-4-golden directory: PROJECT.md, ROADMAP.md, ARCHITECTURE.md, and DECISIONS.md. That directory is not this application's Git repository. A source-quality audit report exists, but no dataset was collected; its 20-unit recommendation and the 5–8-unit RAG pilot remain separate proposals.
+
+Autonomous Agents, MCP, login, cloud accounts, and long-term Memory are outside MVP. Supabase / pgvector is a planned retrieval store, not implemented cloud chat history.
+
+## Local Development and Checks
+
+Requires Node.js 20.9+ and npm. Local simulation needs no API keys, Supabase, or environment variables. Installing dependencies and fetching Google fonts require network access.
+
+~~~bash
 npm ci
 npm run dev
-```
+~~~
 
-Open [localhost:3000](http://localhost:3000) for the main scene, or [the CRT experiment](http://localhost:3000/crt-distortion-test).
+Open [localhost:3000](http://localhost:3000) or [the CRT experiment](http://localhost:3000/crt-distortion-test).
 
-Other available commands:
+~~~bash
+npm run lint
+npx tsc --noEmit --incremental false
+npm run build
+npm run start
+~~~
 
-```bash
-npm run lint                        # ESLint
-npx tsc --noEmit --incremental false # Type checking
-npm run build                       # Production build
-npm run start                       # Serve the production build
-```
-
-Run `npm run build` before `npm run start`.
-
-## Design / Implementation Notes
-
-- The TV is a layered visual scene. Absolute positioning and percentage coordinates preserve the relationship between exported assets; chat content uses flex layouts.
-- CSS Modules own detailed visual styling. Tailwind supplies basic layout utilities; shared colors and radii live in `globals.css`.
-- Decorative artwork is loaded as SVG backgrounds. Pointers and the send icon use inline SVG for independent positioning and transforms.
-- Small dial rotation uses a CSS custom property around a documented pivot. The dials currently serve as decoration.
-- Chat content remains native DOM. CRT distortion is isolated in an experimental route to evaluate text, selection, scrolling, and input behavior before integration.
-- The current scene scales with width. It should not yet be treated as a complete responsive chat interface.
+Build before running start. ESLint and TypeScript passed in the 2026-10-20 documentation audit. No production build or new browser/device test was performed. Visual and interaction acceptance is based on the owner's session reports.
 
 ## License / Disclaimer
 
-This is an unofficial fan-inspired portfolio project, not affiliated with or endorsed by ATLUS or SEGA. Persona 4 Golden and related names, trademarks, and official materials belong to their respective rights holders; no ownership of those materials is claimed here.
+An unofficial fan-inspired portfolio project, not affiliated with or endorsed by ATLUS or SEGA. Persona 4 Golden and related names, trademarks, and official materials belong to their respective rights holders.
 
-No `LICENSE` file is currently included in this repository. No open-source license is declared for the project code, and this README does not grant rights to third-party assets.
+No LICENSE file or open-source license is currently declared. This README grants no rights to third-party assets.

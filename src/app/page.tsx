@@ -1,11 +1,11 @@
 import Background from "@/components/Background";
-import ChatExperience from "@/components/ChatExperience";
+import Tv from "@/components/Tv";
 
 function Page() {
   return (
     <div className="w-full min-h-dvh">
       <Background />
-      <ChatExperience />
+      <Tv />
     </div>
   );
 }

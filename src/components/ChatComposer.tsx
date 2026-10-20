@@ -11,17 +11,10 @@ import styles from "./chat-composer.module.css";
 
 interface ChatComposerProps {
   onSendMessage: (message: string) => void;
-  onDraftChange: (value: string) => void;
   status: ChatStatus;
-  draft: string;
 }
 
-function ChatComposer({
-  onSendMessage,
-  status,
-  draft,
-  onDraftChange,
-}: ChatComposerProps) {
+function ChatComposer({ onSendMessage, status }: ChatComposerProps) {
   const formRef = React.useRef<HTMLFormElement>(null);
 
   function handleKeyDown(e: React.KeyboardEvent<HTMLTextAreaElement>) {
@@ -29,17 +22,23 @@ function ChatComposer({
     // 输入法选词
     if (e.nativeEvent.isComposing) return;
 
+    // 放在这里防止 默认键入被 阻止
     e.preventDefault();
     formRef.current?.requestSubmit();
   }
 
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    if (!draft.trim()) return;
-    if (status === "loading" || status === "streaming") return;
 
-    onSendMessage(draft);
-    onDraftChange("");
+    if (status !== "idle") return;
+
+    // 非受控, 读取form
+    const form = event.currentTarget;
+    const text = String(new FormData(form).get("message") ?? "");
+    if (!text.trim()) return;
+
+    onSendMessage(text);
+    form.reset();
   }
 
   return (
@@ -51,10 +50,9 @@ function ChatComposer({
       >
         <InputGroup>
           <InputGroupTextarea
-            value={draft}
-            onChange={(e) => onDraftChange(e.target.value)}
             onKeyDown={handleKeyDown}
             className={styles["input"]}
+            name="message"
             rows={1}
             aria-label="消息输入"
             placeholder="请输入文本..."
